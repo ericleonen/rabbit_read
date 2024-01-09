@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <ScreenView centered>
       <div className="flex flex-col items-center">
-        <h1 className="text-4xl font-bold">Rabbit, Read!</h1>
+        <h1 className="text-4xl font-bold">Untitled</h1>
         <input
           type="text"
           placeholder="Paste in a story here"
@@ -16,6 +16,7 @@ export default function Home() {
         <button className="w-full p-2 font-medium text-center border-2 rounded-md text-sky-500 border-sky-500 hover:bg-sky-500/25">
           Use a random story
         </button>
+        <button className="underline text-sm mt-4">How do I play?</button>
       </div>
     </ScreenView>
   )
