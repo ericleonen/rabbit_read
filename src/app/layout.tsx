@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { ParentProps } from '@/types/props'
+import JotaiProvider from './_components/JotaiProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -9,14 +11,14 @@ export const metadata: Metadata = {
   description: 'Fast, fun, free way to practice speed reading',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: ParentProps) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <JotaiProvider>
+          {children}
+        </JotaiProvider>
+      </body>
     </html>
   )
 }
