@@ -32,7 +32,7 @@ export async function generateStory(subjects: string[], numWords: number) {
         messages: [{
             role: "user",
             content: `Write an approximately ${numWords}-word story about the following subjects:
-                ${subjectsString}`
+                ${subjectsString}. Give me the story and nothing else`
         }]
     });
 
