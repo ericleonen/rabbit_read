@@ -28,7 +28,7 @@ export async function generateStory(subjects: string[], numWords: number) {
     subjectsString = subjectsString.slice(0, subjectsString.length - 2);
 
     const storyGenerator = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo-1106",
+        model: "gpt-3.5-turbo",
         messages: [{
             role: "user",
             content: `Write an approximately ${numWords}-word story about the following subjects:
