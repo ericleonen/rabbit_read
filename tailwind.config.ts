@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import colors from "tailwindcss/colors";
 
 const config: Config = {
   content: [
@@ -12,8 +13,14 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
+      }
     },
+    colors: {
+      black: "#36454F",
+      white: "#F5F5F5",
+      sky: colors.sky,
+      slate: colors.slate
+    }
   },
   plugins: [],
 }
