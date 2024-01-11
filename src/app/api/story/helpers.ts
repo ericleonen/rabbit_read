@@ -24,15 +24,27 @@ export function randomlySelect<T>(arr: T[], n: number) {
  * @param numWords 
  */
 export async function generateStory(subjects: string[], numWords: number) {
-    let subjectsString = subjects.map((subject: string) => `${subject}, `);
-    subjectsString = subjectsString.slice(0, subjectsString.length - 2);
+    if (subjects.length === 0) {
+        throw new Error("Subjects array is empty");
+    }
+
+    let subjectsString = "";
+
+    for (let i = 0; i < subjects.length; i++) {
+        if (i === 0) {
+            subjectsString = subjects[0];
+        } else if (i === subjects.length - 1) {
+            subjectsString += `, and ${subjects[i]}`;
+        } else {
+            subjectsString += `, ${subjects[i]}`;
+        }
+    }
 
     const storyGenerator = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
         messages: [{
             role: "user",
-            content: `Write an approximately ${numWords}-word story about the following subjects:
-                ${subjectsString}. Give me the story and nothing else`
+            content: `Write an approximately ${numWords}-word story about ${subjectsString}.`
         }]
     });
 
