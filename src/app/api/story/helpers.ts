@@ -44,9 +44,24 @@ export async function generateStory(subjects: string[], numWords: number) {
         model: "gpt-3.5-turbo",
         messages: [{
             role: "user",
-            content: `Write an approximately ${numWords}-word story about ${subjectsString}.`
+            content: `Write an approximately ${numWords}-word story about ${subjectsString}.
+                Also give a title as the first line`
         }]
     });
 
-    return storyGenerator.choices[0].message.content;
+    let storyString = storyGenerator.choices[0].message.content;
+
+    if (!storyString) {
+        return { title: null, story: null };
+    }
+
+    const title = storyString.slice(0, storyString.indexOf("\n"));
+    storyString = storyString.slice(title.length);
+
+    while (storyString.indexOf("\n")) storyString = storyString.replace("\n", "");
+
+    return {
+        title,
+        story: storyString
+    }
 }

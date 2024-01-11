@@ -2,9 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import SUBJECTS from "./subjects";
 import { generateStory, randomlySelect } from "./helpers";
 import { TEST_MODE } from "@/config";
-import DUMMY_STORY from "./dummyStory";
+import { DUMMY_STORY, DUMMY_STORY_TITLE } from "./dummyStory";
 
 type ResponseBody = {
+    title: string,
     story: string,
     ok: boolean,
     error: string | null,
@@ -18,22 +19,24 @@ type ResponseBody = {
 export async function GET(req: NextRequest) {
     if (TEST_MODE) {
         return NextResponse.json({
+            title: DUMMY_STORY_TITLE,
             story: DUMMY_STORY,
             ok: true,
             error: null,
             subjects: ["monkey", "paper"]
-        });
+        } as ResponseBody);
     }
 
     const subjects = randomlySelect(SUBJECTS, 3);
 
     try {
-        const story = await generateStory(subjects, 250);
+        const { title, story } = await generateStory(subjects, 250);
 
-        if (!story) throw new Error("Story generation failed");
+        if (!title || !story) throw new Error("Story generation failed");
 
         return NextResponse.json({
             story,
+            title,
             ok: true,
             error: null,
             subjects
@@ -41,6 +44,7 @@ export async function GET(req: NextRequest) {
     } catch (err) {
         return NextResponse.json({
             story: "",
+            title: "",
             ok: false,
             error: (err as Error).message,
             subjects
