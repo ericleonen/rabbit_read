@@ -30,7 +30,7 @@ export default function Story({ blur }: StoryProps) {
                         className="w-full mt-6 overflow-hidden text-lg font-medium text-black resize-none shrink-0"
                     />
                     <button className="w-full py-2 mt-12 font-medium border-2 rounded-md hover:bg-sky-500/25 text-sky-500 border-sky-500">
-                        I'm done early
+                        I&apos;m done early
                     </button>
                 </>
             )
