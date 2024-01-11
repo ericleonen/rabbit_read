@@ -17,6 +17,7 @@ export default function Story({ blur }: StoryProps) {
                 </div>
             ) : (
                 <>
+                    <p className="text-2xl font-bold text-black">{story.value.title}</p>
                     <textarea
                         ref={elem => {
                             if (!elem) return;
@@ -25,8 +26,8 @@ export default function Story({ blur }: StoryProps) {
                             elem.style.height = `${elem.scrollHeight}px`;
                         }}
                         disabled
-                        value={story.value}
-                        className="w-full overflow-hidden text-lg font-medium text-black resize-none shrink-0"
+                        value={story.value.story}
+                        className="w-full mt-6 overflow-hidden text-lg font-medium text-black resize-none shrink-0"
                     />
                     <button className="w-full py-2 mt-12 font-medium border-2 rounded-md hover:bg-sky-500/25 text-sky-500 border-sky-500">
                         I'm done early

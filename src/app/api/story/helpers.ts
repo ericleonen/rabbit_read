@@ -51,17 +51,17 @@ export async function generateStory(subjects: string[], numWords: number) {
 
     let storyString = storyGenerator.choices[0].message.content;
 
-    if (!storyString) {
-        return { title: null, story: null };
-    }
+    if (!storyString) return { title: null, story: null };
 
-    const title = storyString.slice(0, storyString.indexOf("\n"));
+    let title = storyString
+        .slice(0, storyString.indexOf("\n"))
+        .replace("Title: ", "")
+    if (title.charAt(0) === "\"" && title.charAt(title.length - 1) === "\"") {
+        title = title.slice(1, title.length - 1);
+    }
+    
     storyString = storyString.slice(title.length);
+    const story = storyString.trim();
 
-    while (storyString.indexOf("\n")) storyString = storyString.replace("\n", "");
-
-    return {
-        title,
-        story: storyString
-    }
+    return { title, story };
 }

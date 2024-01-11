@@ -1,6 +1,9 @@
 import { atom } from "jotai";
 
 export const storyAtom = atom({
-    value: "",
+    value: {
+        story: "",
+        title: ""
+    },
     loading: true
 });

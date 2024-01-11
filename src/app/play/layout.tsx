@@ -23,7 +23,10 @@ export default function PlayLayout({ children }: ParentProps) {
         .then(data => {
             if (!data.ok) throw new Error(data.error);
             setStory({
-                value: data.story,
+                value: {
+                    title: data.title,
+                    story: data.story
+                },
                 loading: false
             });
         })
