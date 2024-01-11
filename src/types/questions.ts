@@ -1,4 +1,5 @@
 export type MCQ = {
     question: string,
-    options: string[]
+    options: string[],
+    correctIndex: number
 }
