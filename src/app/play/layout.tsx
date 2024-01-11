@@ -13,10 +13,13 @@ export default function PlayLayout({ children }: ParentProps) {
     const setStory = useSetAtom(storyAtom);
 
     useEffect(() => {
+        const controller = new AbortController();
+
         axios.get(
             "/api/story",
             {
-                responseType: "json"
+                responseType: "json",
+                signal: controller.signal
             }
         )
         .then(res => res.data)
@@ -30,6 +33,15 @@ export default function PlayLayout({ children }: ParentProps) {
                 loading: false
             });
         })
+        .catch(err => {
+            if (err.name === "AbortError") {
+                return;
+            } else {
+                console.error(err);
+            }
+        })
+
+        return () => controller.abort();
     })
 
     return (
