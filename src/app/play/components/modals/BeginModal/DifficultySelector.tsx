@@ -2,20 +2,25 @@ import { difficultyAtom } from "@/atoms";
 import { Trigger } from "@/types/functions";
 import { useAtom } from "jotai";
 import Image from "next/image";
+import colors from "tailwindcss/colors";
 
 type DifficultiesData = {
-    imageSource: string
+    imageSource: string,
+    color: any,
 }
 
 const difficultiesDataMap: { [difficulty: string]: DifficultiesData } = {
     "Easy": {
-        imageSource: "/rabbits/baby.jpg"
+        imageSource: "/rabbits/baby.jpg",
+        color: colors.amber
     },
     "Normal": {
-        imageSource: "/rabbits/zen.jpg"
+        imageSource: "/rabbits/zen.jpg",
+        color: colors.pink
     },
     "Hard": {
-        imageSource: "/rabbits/smart.jpg"
+        imageSource: "/rabbits/smart.jpg",
+        color: colors.sky
     }
 }
 
@@ -51,10 +56,14 @@ function DifficultyOption({ value, selected, onSelect }: DifficultyOptionProps) 
     return (
         <button
             onClick={onSelect}
-            style={{ opacity: selected ? 1 : 0.25 }}
-            className="transition-opacity flex flex-col items-center justify-center w-[30%] p-3 border-2 border-black rounded-md h-min bg-slate-200"
+            style={{ 
+                opacity: selected ? 1 : 0.3,
+                backgroundColor: difficultiesDataMap[value].color[100],
+                borderColor: selected ? difficultiesDataMap[value].color[500] : "transparent"
+            }}
+            className="transition-[opacity,colors] flex flex-col items-center justify-center w-[30%] p-3 rounded-md h-min bg-slate-200 border-2"
         >
-            <div className="relative w-full overflow-hidden border-2 border-black rounded-md aspect-square">
+            <div className="relative w-full overflow-hidden rounded-md aspect-square">
                 <Image 
                     src={difficultiesDataMap[value].imageSource}
                     alt={`${value} rabbit`}
@@ -63,7 +72,12 @@ function DifficultyOption({ value, selected, onSelect }: DifficultyOptionProps) 
                     quality={20}
                 />
             </div>
-            <p className="mt-3 font-bold text-black">{value}</p>
+            <p 
+                style={{ color: difficultiesDataMap[value].color[500] }}
+                className="mt-3 font-bold"
+            >
+                {value}
+            </p>
         </button>
     )
 }
