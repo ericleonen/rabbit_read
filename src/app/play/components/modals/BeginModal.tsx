@@ -12,7 +12,7 @@ export default function BeginModal() {
 
     return (
         <Modal {...{visible}} >
-            Begin!
+            <p className="text-2xl font-bold text-black">Ready to read?</p>
         </Modal>
     )
 }
