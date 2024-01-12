@@ -10,13 +10,17 @@ export default function Story({ blur }: StoryProps) {
     const story = useAtomValue(storyAtom);
 
     return (
-        <div className="max-w-[640px] w-full h-full p-12 overflow-y-scroll bg-white sm:rounded-md flex flex-col">{
+        <div 
+            style={{ overflowY: blur ? "hidden" : "scroll" }}
+            className="relative max-w-[640px] w-full h-full p-12 bg-white sm:rounded-md flex flex-col"
+        >{
             story.loading ? (
                 <div className="flex items-center justify-center w-full h-full">
                     <FaSpinner className="text-lg text-slate-500 animate-spin" />
                 </div>
             ) : (
                 <>
+                    { blur && <div className="absolute top-0 left-0 w-full h-full rounded-md backdrop-blur-sm"/> }
                     <p className="text-2xl font-bold text-black">{story.value.title}</p>
                     <textarea
                         ref={elem => {

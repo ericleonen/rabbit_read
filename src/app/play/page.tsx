@@ -6,7 +6,6 @@ export default function PlayPage() {
     return (
         <>
             <StoryPage />
-            <StoryPage />
         </>
     );
 }

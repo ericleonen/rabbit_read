@@ -7,7 +7,7 @@ export default function StoryPage() {
 
     return (
         <SliderPage>
-            <Story blur={false} />
+            <Story blur={true} />
         </SliderPage>
     )
 }
