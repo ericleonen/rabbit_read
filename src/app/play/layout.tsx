@@ -8,6 +8,7 @@ import { useSetAtom } from "jotai";
 import { storyAtom } from "@/atoms";
 import { useEffect } from "react";
 import axios from "axios";
+import BeginModal from "./components/modals/BeginModal";
 
 export default function PlayLayout({ children }: ParentProps) {
     const setStory = useSetAtom(storyAtom);
@@ -52,6 +53,7 @@ export default function PlayLayout({ children }: ParentProps) {
             </Slider>
 
             {/* MODALS */}
+            <BeginModal />
         </ScreenView>
     )
 }
