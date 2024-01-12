@@ -45,7 +45,7 @@ export async function generateStory(subjects: string[], numWords: number) {
         messages: [{
             role: "user",
             content: `Write an approximately ${numWords}-word story about ${subjectsString}.
-                Also give a title as the first line`
+                Also give a title as the first line. Only give me the title and the story`
         }]
     });
 
@@ -53,15 +53,15 @@ export async function generateStory(subjects: string[], numWords: number) {
 
     if (!storyString) return { title: null, story: null };
 
-    let title = storyString
-        .slice(0, storyString.indexOf("\n"))
-        .replace("Title: ", "")
+    let title = storyString.slice(0, storyString.indexOf("\n"));
+
+    storyString = storyString.slice(title.length);
+    const story = storyString.trim();
+
+    title = title.replace("Title: ", "");
     if (title.charAt(0) === "\"" && title.charAt(title.length - 1) === "\"") {
         title = title.slice(1, title.length - 1);
     }
-    
-    storyString = storyString.slice(title.length);
-    const story = storyString.trim();
 
     return { title, story };
 }
