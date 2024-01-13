@@ -12,15 +12,15 @@ type DifficultiesData = {
 
 const difficultiesDataMap: { [difficulty: string]: DifficultiesData } = {
     "Easy": {
-        imageSource: "/rabbits/baby.jpg",
+        imageSource: "/rabbits/baby.png",
         color: colors.amber
     },
     "Normal": {
-        imageSource: "/rabbits/zen.jpg",
+        imageSource: "/rabbits/zen.png",
         color: colors.pink
     },
     "Hard": {
-        imageSource: "/rabbits/smart.jpg",
+        imageSource: "/rabbits/smart.png",
         color: colors.sky
     }
 }
@@ -61,14 +61,15 @@ function DifficultyOption({ value, selected, onSelect }: DifficultyOptionProps) 
             }}
             className="transition-[opacity,colors] flex flex-col items-center justify-center w-[30%] p-3 rounded-md h-min bg-slate-200 border-2"
         >
-            <div className="relative w-full overflow-hidden rounded-md aspect-square">
-                {/* <Image 
+            <div className="relative w-full rounded-md h-28">
+                <Image 
                     src={difficultiesDataMap[value].imageSource}
                     alt={`${value} rabbit`}
                     fill
                     priority={true}
                     quality={20}
-                /> */}
+                    style={{objectFit: "contain"}}
+                />
             </div>
             <p 
                 style={{ color: difficultiesDataMap[value].color[500] }}

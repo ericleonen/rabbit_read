@@ -1,11 +1,12 @@
-import { beginModalAtom } from "@/atoms";
-import { useAtom } from "jotai";
+import { beginModalAtom, storyPhaseAtom } from "@/atoms";
+import { useAtom, useSetAtom } from "jotai";
 import Modal from "../Modal";
 import DifficultySelector from "./DifficultySelector";
 import Instructions from "./Instructions";
 
 export default function BeginModal() {
     const [visible, setVisible] = useAtom(beginModalAtom);
+    const setStoryPhase = useSetAtom(storyPhaseAtom);
 
     return (
         <Modal {...{visible}} >
@@ -13,6 +14,7 @@ export default function BeginModal() {
             <Instructions />
             <DifficultySelector />
             <button 
+                onClick={() => setStoryPhase("COUNTDOWN")}
                 className="w-full py-3 font-bold text-white bg-black rounded-md hover:bg-black/90"
             >
                 Begin

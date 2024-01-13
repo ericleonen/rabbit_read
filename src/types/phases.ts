@@ -1,0 +1,1 @@
+export type StoryPhase = "BEGIN" | "COUNTDOWN" | "READ" | "DONE";

@@ -1,3 +1,4 @@
+import { StoryPhase } from "@/types/phases";
 import { atom } from "jotai";
 
 export const storyAtom = atom({
@@ -13,3 +14,5 @@ export const storyLoadingAtom = atom((get) => get(storyAtom).loading);
 export const difficultyAtom = atom("Normal");
 
 export const beginModalAtom = atom(false);
+
+export const storyPhaseAtom = atom<StoryPhase>("BEGIN");
