@@ -12,7 +12,7 @@ export default function Story({ blur }: StoryProps) {
     return (
         <div 
             style={{ overflowY: blur ? "hidden" : "scroll" }}
-            className="relative max-w-[640px] w-full h-full p-12 bg-white sm:rounded-md flex flex-col"
+            className="sm:border-slate-300 border-white border-2 relative max-w-[640px] w-full h-full p-12 bg-white sm:rounded-md flex flex-col"
         >{
             story.loading ? (
                 <div className="flex items-center justify-center w-full h-full">
@@ -33,7 +33,7 @@ export default function Story({ blur }: StoryProps) {
                         value={story.value.story}
                         className="w-full mt-6 overflow-hidden text-lg font-medium text-black resize-none shrink-0"
                     />
-                    <button className="w-full py-2 mt-12 font-medium border-2 rounded-md hover:bg-sky-500/25 text-sky-500 border-sky-500">
+                    <button className="w-full py-3 mt-12 font-bold text-white bg-black rounded-md hover:opacity-90">
                         I&apos;m done early
                     </button>
                 </>

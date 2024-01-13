@@ -49,7 +49,7 @@ export default function Timer({ on, duration }: TimerProps) {
     }, [currentTime]);
 
     return (
-        <div className="max-w-[640px] w-full bg-white sm:rounded-full border-b-2 border-slate-300 sm:border-white sm:mb-3 h-6 overflow-hidden">
+        <div className="max-w-[640px] w-full bg-white sm:rounded-full border-b-2 sm:border-2 border-slate-300 sm:mb-3 h-6 overflow-hidden">
             <div 
                 style={{ 
                     width: finalTime.current ? `${100 - (finalTime.current - currentTime) / duration * 100}%` : 0,
