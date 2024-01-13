@@ -28,10 +28,8 @@ export default function DifficultySelector() {
     const [difficulty, setDifficulty] = useAtom(difficultyAtom);
 
     return (
-        <div className="flex flex-col items-center w-full">
-            <div className="relative h-[2px] w-full bg-slate-300 my-5">
-                <span className="absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] px-1 text-sm font-bold tracking-wider uppercase bg-white text-slate-400">Choose difficulty</span>
-            </div>
+        <div className="relative flex flex-col items-center w-full border-t-2 border-slate-300 py-5">
+            <span className="absolute left-1/2 top-0 translate-x-[-50%] translate-y-[-50%] px-1 text-sm font-bold tracking-wider uppercase bg-white text-slate-400">Choose difficulty</span>
             <div className="flex justify-around w-full">{
                 Object.keys(difficultiesDataMap).map(value =>
                     <DifficultyOption
