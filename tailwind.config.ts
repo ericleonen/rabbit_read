@@ -20,7 +20,8 @@ const config: Config = {
       white: "#F5F5F5",
       sky: colors.sky,
       slate: colors.slate,
-      pink: colors.pink
+      pink: colors.pink,
+      emerald: colors.emerald
     }
   },
   plugins: [],

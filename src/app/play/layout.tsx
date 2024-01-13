@@ -49,7 +49,6 @@ export default function PlayLayout({ children }: ParentProps) {
     return (
         <ScreenView>
             <Header />
-            <Timer />
             <Slider>
                 { children }
             </Slider>

@@ -5,6 +5,7 @@ import Story from "../Story";
 import SliderPage from "./SliderPage";
 import { beginModalAtom, storyLoadingAtom } from "@/atoms";
 import { useEffect } from "react";
+import Timer from "../Timer";
 
 export default function StoryPage() {
     const storyLoading = useAtomValue(storyLoadingAtom);
@@ -18,6 +19,7 @@ export default function StoryPage() {
 
     return (
         <SliderPage>
+            <Timer />
             <Story blur={true} />
         </SliderPage>
     )
