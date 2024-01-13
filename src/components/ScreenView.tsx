@@ -9,7 +9,7 @@ export default function ScreenView({ children, centered }: ScreenViewProps) {
             style={{
                 justifyContent: centered ? "center" : "flex-start"
             }}
-            className="flex flex-col items-center w-screen h-screen bg-white relative"
+            className="relative flex flex-col items-center w-screen h-screen bg-slate-200"
         >
             {children}
         </div>
