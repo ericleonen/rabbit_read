@@ -12,7 +12,11 @@ export default function BeginModal() {
             <p className="mt-3 mb-6 text-2xl font-bold text-black">Ready to read?</p>
             <Instructions />
             <DifficultySelector />
-            <button className="w-full py-3 font-bold text-white bg-black rounded-md hover:bg-black/90">Begin</button>
+            <button 
+                className="w-full py-3 font-bold text-white bg-black rounded-md hover:bg-black/90"
+            >
+                Begin
+            </button>
         </Modal>
     )
 }

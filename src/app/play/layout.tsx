@@ -9,6 +9,7 @@ import { storyAtom } from "@/atoms";
 import { useEffect } from "react";
 import axios from "axios";
 import BeginModal from "./components/modals/BeginModal";
+import Timer from "./components/Timer";
 
 export default function PlayLayout({ children }: ParentProps) {
     const setStory = useSetAtom(storyAtom);
@@ -35,7 +36,7 @@ export default function PlayLayout({ children }: ParentProps) {
             });
         })
         .catch(err => {
-            if (err.name === "AbortError") {
+            if (err.name === "AbortError" || err.name === "CanceledError") {
                 return;
             } else {
                 console.error(err);
@@ -48,6 +49,7 @@ export default function PlayLayout({ children }: ParentProps) {
     return (
         <ScreenView>
             <Header />
+            <Timer />
             <Slider>
                 { children }
             </Slider>
