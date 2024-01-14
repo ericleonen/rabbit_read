@@ -8,23 +8,22 @@ import { sliderIndexAtom } from "@/atoms";
 import { Transition } from "@headlessui/react";
 
 const pages: React.ReactNode[] = [
-    <StoryPage />,
-    <TimesUpPage message="Let's test your comprehension" />
+    <StoryPage key="story" />,
+    <TimesUpPage message="Let's test your comprehension" key="storyTimesUp" />
 ]
 
 export default function PlayPage() {
     const sliderIndex = useAtomValue(sliderIndexAtom);
 
     return pages.map((page: React.ReactNode, index: number) => (
-        <Fragment key={index}>
-            <Transition
-                show={index === sliderIndex}
-                leave="duration-500 transition-[margin]"
-                leaveFrom="ml-0"
-                leaveTo="ml-[-100%]"
-            >
-                { page }
-            </Transition>
-        </Fragment>
+        <Transition
+            key={index}
+            show={index === sliderIndex}
+            leave="duration-500 transition-[margin]"
+            leaveFrom="ml-0"
+            leaveTo="ml-[-100%]"
+        >
+            { page }
+        </Transition>
     ));
 }
