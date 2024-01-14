@@ -4,13 +4,20 @@ import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import Story from "../Story";
 import SliderPage from "./SliderPage";
 import { beginModalAtom, storyLoadingAtom, storyPhaseAtom } from "@/atoms";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import Timer from "../Timer";
 
 export default function StoryPage() {
     const storyLoading = useAtomValue(storyLoadingAtom);
     const setBeginModalVisible = useSetAtom(beginModalAtom);
     const [storyPhase, setStoryPhase] = useAtom(storyPhaseAtom);
+    const [countdown, setCountdown] = useState(3);
+    const countdownInterval = useRef<NodeJS.Timeout | null>(null);
+    const clearCountdownInterval = () => {
+        if (countdownInterval.current) {
+            clearInterval(countdownInterval.current);
+        }
+    }
 
     useEffect(() => {
         if (!storyLoading) {
@@ -22,13 +29,20 @@ export default function StoryPage() {
         if (storyPhase === "COUNTDOWN") {
             setBeginModalVisible(false);
 
-            const timeout = setTimeout(() => {
-                setStoryPhase("READ");
-            }, 3000);
+            countdownInterval.current = setInterval(() => {
+                setCountdown(prev => Math.max(prev - 1, 0));
+            }, 1000);
 
-            return () => clearTimeout(timeout);
+            return clearCountdownInterval;
         }
     }, [storyPhase]);
+
+    useEffect(() => {
+        if (countdown === 0) {
+            clearCountdownInterval();
+            setStoryPhase("READ");
+        }
+    }, [countdown]);
 
     return (
         <SliderPage>
@@ -38,6 +52,7 @@ export default function StoryPage() {
             />
             <Story 
                 blur={["BEGIN", "COUNTDOWN"].includes(storyPhase)}
+                blurText={["Ready", "Set", "Read!", ""][3 - countdown]}
             />
         </SliderPage>
     )

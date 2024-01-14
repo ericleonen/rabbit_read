@@ -3,10 +3,11 @@ import { useAtomValue } from "jotai"
 import { FaSpinner } from "react-icons/fa6";
 
 type StoryProps = {
-    blur: boolean
+    blur: boolean,
+    blurText: string
 }
 
-export default function Story({ blur }: StoryProps) {
+export default function Story({ blur, blurText }: StoryProps) {
     const story = useAtomValue(storyAtom);
 
     return (
@@ -20,7 +21,12 @@ export default function Story({ blur }: StoryProps) {
                 </div>
             ) : (
                 <>
-                    { blur && <div className="absolute top-0 left-0 w-full h-full rounded-md backdrop-blur-sm"/> }
+                    { 
+                        blur && 
+                        <div className="absolute top-0 left-0 w-full h-full rounded-md backdrop-blur-sm flex items-center justify-center">
+                            <span className="text-black font-bold text-4xl">{ blurText }</span>
+                        </div> 
+                    }
                     <p className="text-2xl font-bold text-black">{story.value.title}</p>
                     <textarea
                         ref={elem => {
