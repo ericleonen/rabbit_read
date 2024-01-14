@@ -48,7 +48,7 @@ export default function StoryPage() {
         <SliderPage>
             <Timer 
                 on={storyPhase === "READ"}
-                duration={10000}
+                duration={3000}
             />
             <Story 
                 blur={["BEGIN", "COUNTDOWN"].includes(storyPhase)}

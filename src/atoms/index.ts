@@ -1,4 +1,5 @@
 import { StoryPhase } from "@/types/phases";
+import { MCQ } from "@/types/questions";
 import { atom } from "jotai";
 
 export const storyAtom = atom({
@@ -8,8 +9,12 @@ export const storyAtom = atom({
     },
     loading: true
 });
-
 export const storyLoadingAtom = atom((get) => get(storyAtom).loading);
+
+export const questionsAtom = atom({
+    value: [] as MCQ[],
+    loading: true
+})
 
 export const difficultyAtom = atom("Normal");
 

@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react"
 import Content from "../Content"
-import Timer from "../Timer"
+import Timer, { useAutoTimer } from "../Timer"
 import SliderPage from "./SliderPage"
 
 type TimesUpPageProps = {
@@ -8,11 +7,7 @@ type TimesUpPageProps = {
 }
 
 export default function TimesUpPage({ message }: TimesUpPageProps) {
-    const [on, setOn] = useState(false);
-
-    useEffect(() => {
-        setOn(true);
-    }, []);
+    const on = useAutoTimer();
 
     return (
         <SliderPage>

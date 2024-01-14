@@ -5,14 +5,14 @@ import ScreenView from "@/components/ScreenView";
 import { ParentProps } from "@/types/props";
 import Slider from "./components/Slider";
 import { useSetAtom } from "jotai";
-import { storyAtom } from "@/atoms";
+import { questionsAtom, storyAtom } from "@/atoms";
 import { useEffect } from "react";
 import axios from "axios";
 import BeginModal from "./components/modals/BeginModal";
-import Timer from "./components/Timer";
 
 export default function PlayLayout({ children }: ParentProps) {
     const setStory = useSetAtom(storyAtom);
+    const setQuestions = useSetAtom(questionsAtom);
 
     useEffect(() => {
         const controller = new AbortController();
@@ -34,6 +34,23 @@ export default function PlayLayout({ children }: ParentProps) {
                 },
                 loading: false
             });
+
+            axios.post(
+                "/api/questions",
+                { story: data.story },
+                {
+                    responseType: "json",
+                    signal: controller.signal
+                }
+            )
+            .then(res => res.data)
+            .then(data => {
+                if (!data.ok) throw new Error(data.error);
+                setQuestions({
+                    value: data.questions,
+                    loading: false
+                });
+            })
         })
         .catch(err => {
             if (err.name === "AbortError" || err.name === "CanceledError") {
@@ -44,7 +61,7 @@ export default function PlayLayout({ children }: ParentProps) {
         })
 
         return () => controller.abort();
-    })
+    });
 
     return (
         <ScreenView>

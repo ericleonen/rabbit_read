@@ -1,7 +1,7 @@
 import { storyAtom } from "@/atoms"
 import { useAtomValue } from "jotai"
-import { FaSpinner } from "react-icons/fa6";
 import Content from "./Content";
+import Loader from "./Loader";
 
 type StoryProps = {
     blur: boolean,
@@ -14,9 +14,7 @@ export default function Story({ blur, blurText }: StoryProps) {
     return (
         <Content style={{ overflowY: blur ? "hidden" : "scroll" }}>{
             story.loading ? (
-                <div className="flex items-center justify-center w-full h-full">
-                    <FaSpinner className="text-lg text-slate-500 animate-spin" />
-                </div>
+                <Loader />
             ) : (
                 <>
                     { 

@@ -9,7 +9,18 @@ type TimerProps = {
     duration: number
 }
 
+export function useAutoTimer() {
+    const [on, setOn] = useState(false);
+
+    useEffect(() => {
+        setOn(true);
+    }, []);
+
+    return on;
+}
+
 export default function Timer({ on, duration }: TimerProps) {
+
     const [currentTime, setCurrentTime] = useState(0);
     const finalTime = useRef<number>(0);
     const intervalID = useRef<NodeJS.Timeout | null>(null);
