@@ -17,7 +17,7 @@ export default function Slider({ children }: ParentProps) {
         <div className="relative flex-grow w-full overflow-hidden">
             <div
                 style={{ marginLeft: `-${sliderIndex * windowWidth.current}px` }}
-                className="flex h-full transition-[margin]"
+                className="flex h-full transition-[margin] duration-500"
             >
                 { children }
             </div>
