@@ -16,14 +16,15 @@ export default function PlayPage() {
     const sliderIndex = useAtomValue(sliderIndexAtom);
 
     return pages.map((page: React.ReactNode, index: number) => (
-        <Transition
-            key={`page_${index}`}
-            show={index === sliderIndex}
-            leave="duration-500 transition-[margin]"
-            leaveFrom="ml-0"
-            leaveTo="ml-[-100%]"
-        >
-            { page }
-        </Transition>
+        <Fragment key={index}>
+            <Transition
+                show={index === sliderIndex}
+                leave="duration-500 transition-[margin]"
+                leaveFrom="ml-0"
+                leaveTo="ml-[-100%]"
+            >
+                { page }
+            </Transition>
+        </Fragment>
     ));
 }
