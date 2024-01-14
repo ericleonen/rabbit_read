@@ -16,3 +16,5 @@ export const difficultyAtom = atom("Normal");
 export const beginModalAtom = atom(false);
 
 export const storyPhaseAtom = atom<StoryPhase>("BEGIN");
+
+export const sliderIndexAtom = atom(0);

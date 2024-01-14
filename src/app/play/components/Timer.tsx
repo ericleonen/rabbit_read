@@ -1,3 +1,5 @@
+import { sliderIndexAtom } from "@/atoms";
+import { useSetAtom } from "jotai";
 import { useEffect, useRef, useState } from "react"
 
 type TimerProps = {
@@ -10,6 +12,7 @@ export default function Timer({ on, duration }: TimerProps) {
     const finalTime = useRef<number>(0);
     const intervalID = useRef<NodeJS.Timeout | null>(null);
     const transitionDuration = useRef<number>(0);
+    const setSliderIndex = useSetAtom(sliderIndexAtom);
 
     const clearTimer = () => {
         if (intervalID.current !== null) {
@@ -37,11 +40,11 @@ export default function Timer({ on, duration }: TimerProps) {
     }, [on]);
 
     useEffect(() => {
-        if (currentTime >= finalTime.current) {
+        if (currentTime > finalTime.current) {
             clearTimer();
 
             const timeout = setTimeout(() => {
-                // move to next page
+                setSliderIndex(prev => prev + 1);
             }, transitionDuration.current);
 
             return () => clearTimeout(timeout);
