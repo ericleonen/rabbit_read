@@ -25,7 +25,7 @@ export default function QuestionPage() {
 
     return (
         <SliderPage>
-            <Timer on={on && !questions.loading && false} duration={DIFFICULTY_DURATIONS[difficulty].questions} />
+            <Timer on={on && !questions.loading} duration={DIFFICULTY_DURATIONS[difficulty].questions} />
             <Content style={{ 
                 overflowY: "hidden",
                 padding: 0
