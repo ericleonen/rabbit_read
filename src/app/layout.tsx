@@ -7,8 +7,8 @@ import JotaiProvider from '../components/JotaiProvider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Rabbit, Read',
-  description: 'Fast, fun, free way to practice speed reading',
+  title: 'Rabbit, Read!',
+  description: 'The fast, fun, and free way to practice speed reading',
 }
 
 export default function RootLayout({ children }: ParentProps) {
