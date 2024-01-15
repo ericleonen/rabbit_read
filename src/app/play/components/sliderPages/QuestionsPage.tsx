@@ -11,7 +11,7 @@ import { DIFFICULTY_DURATIONS } from "@/config";
 
 export default function QuestionPage() {
     const questions = useAtomValue(questionsAtom);
-    const on = useAutoTimer() && !questions.loading && false;
+    const on = useAutoTimer() && !questions.loading;
     const [numAnswered, setNumAnswered] = useState(0);
     const setSliderIndex = useSetAtom(sliderIndexAtom);
 
