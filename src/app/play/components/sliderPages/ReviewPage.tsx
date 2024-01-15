@@ -20,17 +20,17 @@ function getResultData(numQuestions: number, numCorrect: number): ResultData {
     } else if (ratio >= 0.8) {
         return {
             message: "Hare-raisingly good!",
-            imageSource: "/rabbits/skateboard.png"
+            imageSource: "/rabbits/cool.png"
         }
     } else if (ratio >= 0.6) {
         return {
             message: "Be hoppy!",
-            imageSource: "/rabbits/boat.png"
+            imageSource: "/rabbits/catch.png"
         }
     } else if (ratio >= 0.4) {
         return {
             message: "Practice make fur-fect!",
-            imageSource: "/rabbits/boxer.png"
+            imageSource: "/rabbits/train.png"
         } 
     } else if (ratio >= 0.2) {
         return {
@@ -40,7 +40,7 @@ function getResultData(numQuestions: number, numCorrect: number): ResultData {
     } else {
         return {
             message: "Everybunny has off days.",
-            imageSource: "/rabbits/boxer.png"
+            imageSource: "/rabbits/hurt.png"
         }
     }
 }
