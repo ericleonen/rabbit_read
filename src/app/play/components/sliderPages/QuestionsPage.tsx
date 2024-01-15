@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 
 export default function QuestionPage() {
     const questions = useAtomValue(questionsAtom);
-    const on = useAutoTimer() && !questions.loading;
+    const on = useAutoTimer() && !questions.loading && false;
     const [numAnswered, setNumAnswered] = useState(0);
     const setSliderIndex = useSetAtom(sliderIndexAtom);
 
@@ -23,14 +23,17 @@ export default function QuestionPage() {
     return (
         <SliderPage>
             <Timer {...{on}} duration={30000} />
-            <Content style={{ overflowY: "scroll" }} >{
+            <Content style={{ 
+                overflowY: "hidden",
+                padding: 0
+            }} >{
                 questions.loading ? (
                     <Loader />
                 ) : 
                 questions.value.map((question: MCQ, questionIndex: number) =>
                     <Question 
                         key={`question_${questionIndex}`}
-                        {...{question, questionIndex, setNumAnswered}}
+                        {...{question, questionIndex, numAnswered, setNumAnswered}}
                     />
                 )
             }</Content>

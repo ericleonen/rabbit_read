@@ -14,7 +14,9 @@ export const storyLoadingAtom = atom((get) => get(storyAtom).loading);
 export const questionsAtom = atom({
     value: [] as MCQ[],
     loading: true
-})
+});
+
+export const numQuestionsAtom = atom((get) => get(questionsAtom).value.length);
 
 export const difficultyAtom = atom("Normal");
 
