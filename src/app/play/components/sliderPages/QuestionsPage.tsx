@@ -11,7 +11,7 @@ import { DIFFICULTY_DURATIONS } from "@/config";
 
 export default function QuestionPage() {
     const questions = useAtomValue(questionsAtom);
-    const on = useAutoTimer() && !questions.loading;
+    const on = useAutoTimer();
     const [numAnswered, setNumAnswered] = useState(0);
     const setSliderIndex = useSetAtom(sliderIndexAtom);
 
@@ -25,7 +25,7 @@ export default function QuestionPage() {
 
     return (
         <SliderPage>
-            <Timer {...{on}} duration={DIFFICULTY_DURATIONS[difficulty].questions} />
+            <Timer on={on && !questions.loading} duration={DIFFICULTY_DURATIONS[difficulty].questions} />
             <Content style={{ 
                 overflowY: "hidden",
                 padding: 0
