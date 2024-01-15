@@ -7,11 +7,13 @@ import { useAtomValue } from "jotai";
 import { sliderIndexAtom } from "@/atoms";
 import { Transition } from "@headlessui/react";
 import QuestionsPage from "./components/sliderPages/QuestionsPage";
+import ReviewPage from "./components/sliderPages/ReviewPage";
 
 const pages: React.ReactNode[] = [
     <StoryPage key="story" />,
     <TimesUpPage message="Let's test your comprehension" key="storyTimesUp" />,
-    <QuestionsPage key="questionTest" />
+    <QuestionsPage key="questionTest" />,
+    <ReviewPage />
 ]
 
 export default function PlayPage() {
