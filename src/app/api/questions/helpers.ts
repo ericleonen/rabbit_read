@@ -11,9 +11,9 @@ export async function generateMCQs(story: string) {
         model: "gpt-3.5-turbo",
         messages: [{
             role: "user",
-            content: `Generate 5 multiple choice questions (numbered 1 through 5) with 4 options
-                each (labeled a through d where the correct answer is a) about the following
-                story: ${story}`
+            content: `Generate 5 short multiple choice questions (numbered 1 through 5) with 4 
+                short options each (labeled a through d where the correct answer is a) about the 
+                following story: ${story}`
         }]
     });
 
