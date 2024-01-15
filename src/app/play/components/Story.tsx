@@ -1,5 +1,5 @@
-import { storyAtom } from "@/atoms"
-import { useAtomValue } from "jotai"
+import { sliderIndexAtom, storyAtom } from "@/atoms"
+import { useAtomValue, useSetAtom } from "jotai"
 import Content from "./Content";
 import Loader from "./Loader";
 
@@ -10,6 +10,7 @@ type StoryProps = {
 
 export default function Story({ blur, blurText }: StoryProps) {
     const story = useAtomValue(storyAtom);
+    const setSliderIndex = useSetAtom(sliderIndexAtom);
 
     return (
         <Content style={{ overflowY: blur ? "hidden" : "scroll" }}>{
@@ -35,7 +36,10 @@ export default function Story({ blur, blurText }: StoryProps) {
                         value={story.value.story}
                         className="w-full mt-6 overflow-hidden text-lg font-medium text-black resize-none shrink-0"
                     />
-                    <button className="w-full py-3 mt-12 font-bold text-white bg-black rounded-md hover:opacity-90">
+                    <button 
+                        onClick={() => setSliderIndex(prev => prev + 1)}
+                        className="w-full py-3 mt-12 font-bold text-white bg-black rounded-md hover:opacity-90"
+                    >
                         I&apos;m done early
                     </button>
                 </>
