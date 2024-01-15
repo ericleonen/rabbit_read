@@ -3,6 +3,8 @@ import { MCQ } from "@/types/questions"
 import { useSetAtom } from "jotai";
 import { useEffect, useRef, useState } from "react"
 import colors from "tailwindcss/colors";
+import { motion } from "framer-motion";
+import { Trigger } from "@/types/functions";
 
 type QuestionProps = {
     question: MCQ,
@@ -48,30 +50,67 @@ export default function Question({ question, questionIndex, numAnswered, setNumA
             </div>
             {
                 question.options.map((option: string, optionIndex: number) =>
-                    <button 
+                    <Option 
                         key={`option_${optionIndex}`}
-                        disabled={selectedOption >= 0}
-                        style={selectedOption >= 0 ? {
-                            backgroundColor: 
-                                optionIndex === question.correctIndex ? colors.emerald[100] :
-                                selectedOption === optionIndex ? colors.red[100] : 
-                                "",
-                            borderColor:
-                                optionIndex === question.correctIndex ? colors.emerald[500] :
-                                selectedOption === optionIndex ? colors.red[500] : 
-                                "",
-                            color:
-                                optionIndex === question.correctIndex ? colors.emerald[500] :
-                                selectedOption === optionIndex ? colors.red[500] : 
-                                "",
-                        } : {}}
-                        onClick={() => setSelectedOption(optionIndex)}
-                        className="p-5 mt-1 ml-4 font-medium text-left border-2 rounded-md hover:bg-sky-100 border-slate-300 text-slate-400 disabled:hover:bg-white disabled:cursor-not-allowed"
-                    >
-                        { option }
-                    </button>
+                        value={option}
+                        correct={question.correctIndex === optionIndex}
+                        selected={selectedOption === optionIndex}
+                        select={() => setSelectedOption(optionIndex)}
+                        revealed={selectedOption >= 0}
+                    />
                 )
             }
         </div>
+    )
+}
+
+type OptionProps = {
+    value: string,
+    correct: boolean,
+    selected: boolean,
+    select: Trigger,
+    revealed: boolean,
+}
+
+function Option({ value, correct, selected, select, revealed }: OptionProps) {
+
+
+    return (
+        <motion.button
+            onClick={select}
+            disabled={revealed}
+            animate={
+                selected ? (
+                    correct ? {
+                        scale: [1, 1.1, 1],
+                        transition: {
+                            duration: 0.25
+                        }
+                    } : {
+                        x: [0, -10, 10, -5, 5, 0],
+                        transition: {
+                            duration: 0.25
+                        }
+                    }
+                ) : {}
+            }
+            style={revealed ? {
+                backgroundColor: 
+                    correct ? colors.emerald[100] :
+                    selected ? colors.red[100] : 
+                    "",
+                borderColor:
+                    correct ? colors.emerald[500] :
+                    selected ? colors.red[500] : 
+                    "",
+                color:
+                    correct ? colors.emerald[500] :
+                    selected ? colors.red[500] : 
+                    "",
+            } : {}}
+            className="p-5 mt-1 ml-4 font-medium text-left border-2 rounded-md hover:bg-sky-100 border-slate-300 text-slate-400 disabled:hover:bg-white disabled:cursor-not-allowed"
+        >
+            { value }
+        </motion.button>
     )
 }

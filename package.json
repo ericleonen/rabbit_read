@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.18",
-    "@react-spring/web": "^9.7.3",
     "axios": "^1.6.5",
+    "framer-motion": "^10.18.0",
     "jotai": "^2.6.1",
     "next": "14.0.4",
     "openai": "^4.24.2",
