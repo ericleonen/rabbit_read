@@ -3,9 +3,10 @@
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import Story from "../Story";
 import SliderPage from "./SliderPage";
-import { beginModalAtom, storyLoadingAtom, storyPhaseAtom } from "@/atoms";
+import { beginModalAtom, difficultyAtom, storyLoadingAtom, storyPhaseAtom } from "@/atoms";
 import { useEffect, useRef, useState } from "react";
 import Timer from "../Timer";
+import { DIFFICULTY_DURATIONS } from "@/config";
 
 export default function StoryPage() {
     const storyLoading = useAtomValue(storyLoadingAtom);
@@ -44,11 +45,13 @@ export default function StoryPage() {
         }
     }, [countdown]);
 
+    const difficulty = useAtomValue(difficultyAtom);
+
     return (
         <SliderPage>
             <Timer 
                 on={storyPhase === "READ"}
-                duration={3000}
+                duration={DIFFICULTY_DURATIONS[difficulty].story}
             />
             <Story 
                 blur={["BEGIN", "COUNTDOWN"].includes(storyPhase)}

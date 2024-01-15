@@ -2,11 +2,12 @@ import { useAtomValue, useSetAtom } from "jotai";
 import Content from "../Content";
 import Timer, { useAutoTimer } from "../Timer";
 import SliderPage from "./SliderPage";
-import { questionsAtom, sliderIndexAtom } from "@/atoms";
+import { difficultyAtom, questionsAtom, sliderIndexAtom } from "@/atoms";
 import Loader from "../Loader";
 import { MCQ } from "@/types/questions";
 import Question from "../Question";
 import { useEffect, useState } from "react";
+import { DIFFICULTY_DURATIONS } from "@/config";
 
 export default function QuestionPage() {
     const questions = useAtomValue(questionsAtom);
@@ -20,9 +21,11 @@ export default function QuestionPage() {
         }
     }, [numAnswered]);
 
+    const difficulty = useAtomValue(difficultyAtom);
+
     return (
         <SliderPage>
-            <Timer {...{on}} duration={30000} />
+            <Timer {...{on}} duration={DIFFICULTY_DURATIONS[difficulty].questions} />
             <Content style={{ 
                 overflowY: "hidden",
                 padding: 0
