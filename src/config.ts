@@ -1,4 +1,4 @@
-export const TEST_MODE = true;
+export const TEST_MODE = false;
 
 export const DIFFICULTY_DURATIONS: {
     [difficulty: string]: {
