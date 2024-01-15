@@ -13,7 +13,7 @@ const pages: React.ReactNode[] = [
     <StoryPage key="story" />,
     <TimesUpPage message="Let's test your comprehension" key="storyTimesUp" />,
     <QuestionsPage key="questionTest" />,
-    <ReviewPage />
+    <ReviewPage key="review" />
 ]
 
 export default function PlayPage() {
