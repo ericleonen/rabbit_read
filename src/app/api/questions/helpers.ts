@@ -12,7 +12,7 @@ export async function generateMCQs(story: string) {
         messages: [{
             role: "user",
             content: `Generate 5 short multiple choice questions (numbered 1 through 5) with 4 
-                short options each (labeled a through d where the correct answer is a) about the 
+                options each (labeled a through d where the correct answer is a) about the 
                 following story: ${story}`
         }]
     });
