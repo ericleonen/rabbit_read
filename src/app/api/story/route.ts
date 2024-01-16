@@ -3,6 +3,7 @@ import SUBJECTS from "./subjects";
 import { generateStory, randomlySelect } from "./helpers";
 import { TEST_MODE } from "@/config";
 import { DUMMY_STORY, DUMMY_STORY_TITLE } from "./dummyStory";
+import { headers } from "next/headers";
 
 type ResponseBody = {
     title: string,
@@ -17,7 +18,12 @@ type ResponseBody = {
  * denotes, in the returned JSON, that a field "ok" is false and an error field
  */
 export async function GET(req: NextRequest) {
-    if (TEST_MODE) {
+    const headersList = headers();
+
+    if (
+        headersList.get("Rabbit-Read-Key") !== process.env.NEXT_PUBLIC_RABBIT_READ_KEY || 
+        TEST_MODE
+    ) {
         return NextResponse.json({
             title: DUMMY_STORY_TITLE,
             story: DUMMY_STORY,

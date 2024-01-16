@@ -1,6 +1,5 @@
 "use client"
 
-import { Fragment } from "react";
 import StoryPage from "./components/sliderPages/StoryPage";
 import TimesUpPage from "./components/sliderPages/TimesUpPage";
 import { useAtomValue } from "jotai";

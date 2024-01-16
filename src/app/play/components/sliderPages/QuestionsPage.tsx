@@ -16,7 +16,7 @@ export default function QuestionPage() {
     const setSliderIndex = useSetAtom(sliderIndexAtom);
 
     useEffect(() => {
-        if (numAnswered === questions.value.length) {
+        if (numAnswered > 0 && numAnswered === questions.value.length) {
             setSliderIndex(prev => prev + 1);
         }
     }, [numAnswered]);

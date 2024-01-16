@@ -21,7 +21,10 @@ export default function PlayLayout({ children }: ParentProps) {
             "/api/story",
             {
                 responseType: "json",
-                signal: controller.signal
+                signal: controller.signal,
+                headers: {
+                    "Rabbit-Read-Key": process.env.NEXT_PUBLIC_RABBIT_READ_KEY
+                }
             }
         )
         .then(res => res.data)
@@ -40,7 +43,10 @@ export default function PlayLayout({ children }: ParentProps) {
                 { story: data.story },
                 {
                     responseType: "json",
-                    signal: controller.signal
+                    signal: controller.signal,
+                    headers: {
+                        "Rabbit-Read-Key": process.env.NEXT_PUBLIC_RABBIT_READ_KEY
+                    }
                 }
             )
             .then(res => res.data)

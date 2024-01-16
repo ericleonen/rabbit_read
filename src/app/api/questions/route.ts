@@ -3,6 +3,7 @@ import { MCQ } from "@/types/questions";
 import { generateMCQs } from "./helpers";
 import { TEST_MODE } from "@/config";
 import DUMMY_QUESTIONS from "./dummyQuestions";
+import { headers } from "next/headers";
 
 type Body = {
     story: string,
@@ -20,9 +21,13 @@ type ResponseBody = {
  * @returns returns an object of questions, ok, and an error string
  */
 export async function POST(req: NextRequest) {
+    const headersList = headers();
     const { story } = await req.json() as Body;
 
-    if (TEST_MODE) {
+    if (
+        headersList.get("Rabbit-Read-Key") !== process.env.NEXT_PUBLIC_RABBIT_READ_KEY ||
+        TEST_MODE
+    ) {
         return NextResponse.json(DUMMY_QUESTIONS);
     }
 
