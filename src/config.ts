@@ -11,11 +11,11 @@ export const DIFFICULTY_DURATIONS: {
         questions: 30000
     },
     "Normal": {
-        story: 40000,
+        story: 35000,
         questions: 20000
     },
     "Hard": {
-        story: 20000,
+        story: 10000,
         questions: 10000
     }
 }

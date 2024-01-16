@@ -14,7 +14,7 @@ export default function Content({ children, centered, style }: ContentProps) {
                 alignItems: centered ? "center" : "start",
                 ...style
             }}
-            className="sm:border-slate-300 border-white border-2 relative max-w-[640px] w-full flex-grow p-12 bg-white sm:rounded-md flex flex-col"
+            className="sm:border-slate-300 border-white border-2 relative max-w-[450px] w-full flex-grow p-12 bg-white sm:rounded-md flex flex-col"
         >
             { children }
         </div>
