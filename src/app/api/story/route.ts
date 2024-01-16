@@ -13,6 +13,8 @@ type ResponseBody = {
     subjects: string[]
 }
 
+export const dynamic = "force-dynamic";
+
 /**
  * Returns a random approximately 250 word story given three subjects. If the operation fails,
  * denotes, in the returned JSON, that a field "ok" is false and an error field

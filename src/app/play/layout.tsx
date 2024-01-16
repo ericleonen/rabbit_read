@@ -16,7 +16,6 @@ export default function PlayLayout({ children }: ParentProps) {
 
     useEffect(() => {
         const controller = new AbortController();
-        console.log(process.env.NEXT_PUBLIC_RABBIT_READ_KEY);
 
         axios.get(
             "/api/story",
