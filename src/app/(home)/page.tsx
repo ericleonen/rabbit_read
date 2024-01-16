@@ -15,16 +15,15 @@ export default function Home() {
       </header>
       <div className="flex items-center flex-grow">
         <div className="flex flex-col max-w-[400px] items-center justify-center">
-          <div className="relative rounded-md w-36 h-36">
-                <Image 
-                    src="/rabbits/zen.png"
-                    alt={`zen rabbit`}
-                    fill
-                    priority={true}
-                    quality={10}
-                    style={{objectFit: "contain"}}
-                />
-            </div>
+          <Image 
+              src="/rabbits/zen.png"
+              alt={`zen rabbit`}
+              height={150}
+              width={150}
+              priority={true}
+              quality={10}
+              style={{objectFit: "contain"}}
+          />
           <h1 className="mt-3 text-4xl font-bold text-center text-black">Rabbit, Read!</h1>
           <p className="mt-1 text-lg font-medium text-center text-slate-500">The fast, fun, and free way to practice&nbsp;speed&nbsp;reading</p>
           <Link 

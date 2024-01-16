@@ -61,16 +61,15 @@ function DifficultyOption({ value, selected, onSelect }: DifficultyOptionProps) 
             }}
             className="transition-[opacity,colors] flex flex-col items-center justify-center w-[30%] p-3 rounded-md h-min bg-slate-200 border-2"
         >
-            <div className="relative w-full rounded-md aspect-square">
-                <Image 
-                    src={difficultiesDataMap[value].imageSource}
-                    alt={`${value} rabbit`}
-                    fill
-                    priority={true}
-                    quality={10}
-                    style={{objectFit: "contain"}}
-                />
-            </div>
+            <Image 
+                src={difficultiesDataMap[value].imageSource}
+                alt={`${value} rabbit`}
+                height={100}
+                width={100}
+                priority={true}
+                quality={10}
+                style={{objectFit: "contain"}}
+            />
             <p 
                 style={{ color: difficultiesDataMap[value].color[500] }}
                 className="mt-3 font-bold"

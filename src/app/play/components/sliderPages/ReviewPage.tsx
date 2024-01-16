@@ -54,16 +54,15 @@ export default function ReviewPage() {
     return (
         <SliderPage>
             <Content centered>
-                <div className="relative w-64 h-64">
-                    <Image 
-                        src={resultData.imageSource}
-                        alt={resultData.message}
-                        fill
-                        priority={true}
-                        quality={10}
-                        style={{objectFit: "contain"}}
-                    />
-                </div>
+                <Image 
+                    src={resultData.imageSource}
+                    alt={resultData.message}
+                    height={256}
+                    width={256}
+                    priority={true}
+                    quality={10}
+                    style={{objectFit: "contain"}}
+                />
                 <p className="text-4xl font-bold text-center text-black">{resultData.message}</p>
                 <p className="mt-2 text-lg font-medium text-center text-slate-500">You got {numCorrect} out of {numQuestions} questions correct</p>
                 <button 
