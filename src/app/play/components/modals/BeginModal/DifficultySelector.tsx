@@ -66,8 +66,8 @@ function DifficultyOption({ value, selected, onSelect }: DifficultyOptionProps) 
                 alt={`${value} rabbit`}
                 height={100}
                 width={100}
-                priority={true}
-                quality={10}
+                priority={value === "Easy"}
+                quality={50}
                 style={{objectFit: "contain"}}
             />
             <p 

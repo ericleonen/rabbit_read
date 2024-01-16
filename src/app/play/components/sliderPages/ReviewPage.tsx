@@ -60,7 +60,7 @@ export default function ReviewPage() {
                     height={256}
                     width={256}
                     priority={true}
-                    quality={10}
+                    quality={50}
                     style={{objectFit: "contain"}}
                 />
                 <p className="text-4xl font-bold text-center text-black">{resultData.message}</p>

@@ -21,7 +21,7 @@ export default function Home() {
               height={150}
               width={150}
               priority={true}
-              quality={10}
+              quality={50}
               style={{objectFit: "contain"}}
           />
           <h1 className="mt-3 text-4xl font-bold text-center text-black">Rabbit, Read!</h1>
